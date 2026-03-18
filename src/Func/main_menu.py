@@ -1,5 +1,6 @@
 from aiogram import Router
 from aiogram.filters import CommandStart, or_f
+from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 from aiogram import F
 
@@ -16,7 +17,8 @@ async def message_with_text(message: Message):
 
 
 @main_menu.message(F.text == "Главное меню")
-async def message_with_text(message: Message):
+async def message_with_text(message: Message, state:FSMContext):
+    await state.clear()
     await message.answer(
         "🏠 Главное меню\n\nВыбери, что хочешь сделать:\n📋 Посмотреть всё питание — план приёмов пищи за сегодня / выбранный день.\n⚙️ Настроить питание — изменить расписание, блюда, порции.\n🔔 Управление уведомлениями — включить/отключить напоминания, изменить время.",
         reply_markup=kb_main_menu())

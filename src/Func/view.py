@@ -15,7 +15,7 @@ async def view_main(message: Message, state: FSMContext):
 
 @view.message(ViewPlan.day)
 async def view_get_day(message: Message, state: FSMContext):
-    allow_days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс', 'Вся неделя']
+    allow_days = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье', 'Вся неделя']
     if message.text.strip() in allow_days:
         pass # TODO: from bd get plan
     else:

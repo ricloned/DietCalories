@@ -16,9 +16,7 @@ async def main():
         CONFIG = json.load(f)
 
     bot = Bot(token=CONFIG['bot_token'], default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-
     dp = Dispatcher()
-
     dp.include_routers(main_menu, settings, alarm, view)
 
     await dp.start_polling(bot)
